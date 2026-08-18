@@ -1,0 +1,236 @@
+[gd_scene load_steps=8 format=3 uid="//uid//hud"]
+
+[ext_resource type="Script" path="res://src/UI/HUD.cs" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_bg"]
+bg_color = Color(0, 0, 0, 0.7)
+border_width_top = 1
+border_width_bottom = 1
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.3, 0.5, 0.8, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.1, 0.1, 0.15, 0.9)
+border_width_top = 1
+border_width_bottom = 1
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.3, 0.3, 0.4, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.2, 0.7, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+corner_radius_bottom_right = 5
+
+[node name="HUD" type="CanvasLayer" layout_mode=3]
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="Panel" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0
+anchor_top = 0
+anchor_right = 1
+anchor_bottom = 0
+offset_top = 10
+offset_bottom = 90
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_bg")
+
+[node name="TopBarContent" type="HBoxContainer" parent="TopBar" layout_mode=3]
+anchors_preset = 15
+offset_left = 20
+offset_top = 10
+offset_right = -20
+offset_bottom = -10
+separation = 30
+
+[node name="SpeedContainer" type="VBoxContainer" parent="TopBarContent" layout_mode=3]
+alignment = 1
+
+[node name="LblSpeedTitle" type="Label" parent="SpeedContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "SPEED"
+theme_override_font_sizes/normal = 12
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="LblSpeed" name="%LblSpeed" type="Label" parent="SpeedContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "0 km/h"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="DistanceContainer" type="VBoxContainer" parent="TopBarContent" layout_mode=3]
+alignment = 1
+
+[node name="LblDistanceTitle" type="Label" parent="DistanceContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "DISTANCE"
+theme_override_font_sizes/normal = 12
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="LblDistance" name="%LblDistance" type="Label" parent="DistanceContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "0.00 km"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="BestDistanceContainer" type="VBoxContainer" parent="TopBarContent" layout_mode=3]
+alignment = 1
+
+[node name="LblBestTitle" type="Label" parent="BestDistanceContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "BEST"
+theme_override_font_sizes/normal = 12
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="LblBestDistance" name="%LblBestDistance" type="Label" parent="BestDistanceContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "Best: 0.00 km"
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+
+[node name="CheckpointContainer" type="VBoxContainer" parent="TopBarContent" layout_mode=3]
+alignment = 1
+
+[node name="LblCheckpointTitle" type="Label" parent="CheckpointContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "CHECKPOINT"
+theme_override_font_sizes/normal = 12
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="LblCheckpoint" name="%LblCheckpoint" type="Label" parent="CheckpointContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "Checkpoint: 0 / 0"
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="CoinsContainer" type="VBoxContainer" parent="TopBarContent" layout_mode=3]
+anchors_preset = 6
+anchor_right = 1
+alignment = 1
+
+[node name="LblCoins" name="%LblCoins" type="Label" parent="CoinsContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "0 🪙"
+theme_override_font_sizes/normal = 24
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="BottomBar" type="Panel" parent="." layout_mode=3]
+anchors_preset = 2
+anchor_left = 0
+anchor_top = 1
+anchor_right = 1
+anchor_bottom = 1
+offset_top = -100
+offset_bottom = -10
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_bg")
+
+[node name="BottomContent" type="HBoxContainer" parent="BottomBar" layout_mode=3]
+anchors_preset = 15
+offset_left = 20
+offset_top = 10
+offset_right = -20
+offset_bottom = -10
+separation = 30
+
+[node name="RpmContainer" type="VBoxContainer" parent="BottomContent" layout_mode=3]
+alignment = 1
+
+[node name="LblRpmTitle" type="Label" parent="RpmContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "RPM"
+theme_override_font_sizes/normal = 14
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="RpmGaugeContainer" type="HBoxContainer" parent="RpmContainer" layout_mode=3]
+separation = 10
+
+[node name="RpmGauge" name="%RpmGauge" type="TextureProgressBar" parent="RpmGaugeContainer" layout_mode=3]
+custom_minimum_size = Vector2(200, 30)
+value = 0
+max_value = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+
+[node name="LblRpm" name="%LblRpm" type="Label" parent="RpmGaugeContainer" layout_mode=3]
+vertical_alignment = 1
+text = "0 / 0 RPM"
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Colors.White
+
+[node name="FuelContainer" type="VBoxContainer" parent="BottomContent" layout_mode=3]
+anchors_preset = 6
+anchor_right = 1
+alignment = 1
+
+[node name="LblFuelTitle" type="Label" parent="FuelContainer" layout_mode=3]
+horizontal_alignment = 1
+text = "FUEL (∞)"
+theme_override_font_sizes/normal = 14
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="FuelBar" name="%FuelBar" type="ProgressBar" parent="FuelContainer" layout_mode=3]
+custom_minimum_size = Vector2(200, 30)
+value = 100
+max_value = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+
+[node name="AnimPlayer" name="%AnimPlayer" type="AnimationPlayer" parent="."]
+anims/entrance = {
+"length": 0.5,
+"loop": false,
+"step": 0.01,
+"tracks": [
+{
+"type": "transform",
+"path": NodePath("TopBar"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(0, -100),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+},
+{
+"type": "transform",
+"path": NodePath("BottomBar"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(0, 100),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+}
+]
+}

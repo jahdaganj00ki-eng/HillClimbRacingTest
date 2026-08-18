@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="//uid//gameplay"]
+
+[ext_resource type="Script" path="res://src/Core/Gameplay.cs" id="1_gameplay"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="2_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_bg"]
+bg_color = Color(0, 0, 0, 0.8)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+
+[node name="Gameplay" type="Node2D" layout_mode=3]
+script = ExtResource("1_gameplay")
+
+[node name="TrackContainer" name="%TrackContainer" type="Node2D" parent="." layout_mode=3]
+
+[node name="Camera2D" type="Camera2D" parent="." layout_mode=3]
+enabled = true
+anchor_mode = 1
+offset = Vector2(0, -100)
+limit_left = 0
+limit_top = -10000
+limit_right = 100000
+limit_bottom = 10000
+drag_margin_h = 0.3
+drag_margin_v = 0.3
+
+[node name="HUD" type="HUD" parent="." layout_mode=3]
+scene = ExtResource("2_hud")
+
+[node name="PauseMenu" type="Panel" parent="." layout_mode=3]
+visible = false
+anchors_preset = 15
+theme_override_styles/panel = SubResource("StyleBoxFlat_pause_bg")
+
+[node name="PauseContent" type="VBoxContainer" parent="PauseMenu" layout_mode=3]
+anchors_preset = 15
+offset_left = -150
+offset_top = -100
+offset_right = 150
+offset_bottom = 100
+alignment = 1
+separation = 20
+
+[node name="PauseTitle" type="Label" parent="PauseContent" layout_mode=3]
+horizontal_alignment = 1
+text = "PAUSED"
+theme_override_font_sizes/normal = 48
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="BtnResume" type="Button" parent="PauseContent" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "RESUME (ESC)"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 24
+
+[node name="BtnRestart" type="Button" parent="PauseContent" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "RESTART TRACK"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 24
+
+[node name="BtnMainMenu" type="Button" parent="PauseContent" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "MAIN MENU"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 24

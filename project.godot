@@ -1,0 +1,69 @@
+; Engine configuration file for Hill Climb Racing Windows Clone
+; Godot 4.3
+
+[application]
+
+config/name="Hill Climb Racing"
+config/icon="res://assets/ui/icon.png"
+run/main_scene="res://scenes/Main.tscn"
+config/features="PCKEncryption,PackedScene"
+
+[autoload]
+
+GameManager="*res://src/Core/GameManager.cs"
+SaveSystem="*res://src/Systems/SaveSystem.cs"
+AudioManager="*res://src/Systems/AudioManager.cs"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=true
+window/size/fullscreen=false
+window/size/borderless=false
+rendering/quality/2d/default_canvas_item_texture_filter=1
+
+[input]
+
+# Vehicle controls
+move_right={
+"deadzone": 0.5,
+"events": [{"type": "Key", "physical_keycode": 39}, {"type": "JoyAxis", "axis": 0}],
+"positive": true
+}
+move_left={
+"deadzone": 0.5,
+"events": [{"type": "Key", "physical_keycode": 37}, {"type": "JoyAxis", "axis": 0}],
+"positive": false
+}
+boost={
+"deadzone": 0.5,
+"events": [{"type": "Key", "physical_keycode": 32}, {"type": "JoyButton", "button": 0}],
+"positive": true
+}
+brake={
+"deadzone": 0.5,
+"events": [{"type": "Key", "physical_keycode": 40}, {"type": "JoyButton", "button": 1}],
+"positive": true
+}
+pause={
+"deadzone": 0.5,
+"events": [{"type": "Key", "physical_keycode": 27}, {"type": "JoyButton", "button": 9}],
+"positive": true
+}
+
+[physics]
+
+2d/default_gravity=980
+2d/cell_size=128
+common/physics_ticks_per_second=60
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.1, 0.1, 0.15, 1)
+canvas_textures/default_texture_filter=1
+
+[mono]
+
+# C# configuration
+builds=[]

@@ -1,0 +1,240 @@
+[gd_scene load_steps=8 format=3 uid="//uid//track_select"]
+
+[ext_resource type="Script" path="res://src/UI/TrackSelectMenu.cs" id="1_track_select"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.15, 0.95)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.7, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.4, 0.6, 0.9, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.3, 0.5, 0.9, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.6, 0.8, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.15, 0.3, 0.6, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_disabled"]
+bg_color = Color(0.2, 0.2, 0.25, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="ButtonTheme" id="ButtonTheme"]
+normal = SubResource("StyleBoxFlat_button")
+hover = SubResource("StyleBoxFlat_button_hover")
+pressed = SubResource("StyleBoxFlat_button_pressed")
+disabled = SubResource("StyleBoxFlat_button_disabled")
+focus = SubResource("StyleBoxFlat_button_hover")
+
+[node name="TrackSelectMenu" type="Control" layout_mode=3]
+script = ExtResource("1_track_select")
+
+[node name="Background" type="ColorRect" parent="." layout_mode=3]
+anchors_preset = 15
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="Header" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0
+anchor_top = 0
+anchor_right = 1
+anchor_bottom = 0
+offset_top = 20
+offset_bottom = 100
+separation = 20
+
+[node name="BtnBack" name="%BtnBack" type="Button" parent="Header" layout_mode=3]
+custom_minimum_size = Vector2(100, 50)
+text = "← BACK"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 20
+
+[node name="TitleLabel" type="Label" parent="Header" layout_mode=3]
+anchors_preset = 10
+anchor_left = 0.5
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "SELECT TRACK"
+theme_override_font_sizes/normal = 36
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="CoinDisplay" type="HBoxContainer" parent="Header" layout_mode=3]
+anchors_preset = 6
+anchor_right = 1
+offset_right = -20
+
+[node name="CoinIcon" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "🪙"
+theme_override_font_sizes/normal = 28
+
+[node name="LblCoins" name="%LblCoins" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "0"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="DifficultyTabs" name="%DifficultyTabs" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0
+anchor_top = 0.12
+anchor_right = 1
+anchor_bottom = 0.12
+offset_top = 10
+offset_bottom = 70
+separation = 10
+alignment = 1
+
+[node name="MainContainer" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 15
+offset_left = 40
+offset_top = 180
+offset_right = -40
+offset_bottom = 100
+separation = 30
+
+[node name="LeftPanel" type="Panel" parent="MainContainer" layout_mode=3]
+custom_minimum_size = Vector2(700, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TrackListScroll" type="ScrollContainer" parent="LeftPanel" layout_mode=3]
+anchors_preset = 15
+offset_left = 10
+offset_top = 10
+offset_right = -10
+offset_bottom = -10
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="TrackListContainer" name="%TrackListContainer" type="VBoxContainer" parent="TrackListScroll" layout_mode=3]
+separation = 10
+
+[node name="RightPanel" type="Panel" parent="MainContainer" layout_mode=3]
+custom_minimum_size = Vector2(400, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TrackDetailsPanel" name="%TrackDetailsPanel" type="VBoxContainer" parent="RightPanel" layout_mode=3]
+anchors_preset = 15
+offset_left = 20
+offset_top = 20
+offset_right = -20
+offset_bottom = -20
+separation = 15
+
+[node name="LblTrackName" name="%LblTrackName" type="Label" parent="TrackDetailsPanel" layout_mode=3]
+horizontal_alignment = 1
+text = "Track Name"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="LblTrackDescription" name="%LblTrackDescription" type="Label" parent="TrackDetailsPanel" layout_mode=3]
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Track description goes here..."
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+
+[node name="Separator1" type="HSeparator" parent="TrackDetailsPanel" layout_mode=3]
+
+[node name="LblTrackInfo" name="%LblTrackInfo" type="Label" parent="TrackDetailsPanel" layout_mode=3]
+text = "Track info will appear here"
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
+
+[node name="Separator2" type="HSeparator" parent="TrackDetailsPanel" layout_mode=3]
+
+[node name="BtnPlay" name="%BtnPlay" type="Button" parent="TrackDetailsPanel" layout_mode=3]
+custom_minimum_size = Vector2(360, 60)
+text = "PLAY"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 24
+
+[node name="AnimPlayer" name="%AnimPlayer" type="AnimationPlayer" parent="."]
+anims/entrance = {
+"length": 0.5,
+"loop": false,
+"step": 0.01,
+"tracks": [
+{
+"type": "transform",
+"path": NodePath("LeftPanel"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(-100, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+},
+{
+"type": "transform",
+"path": NodePath("RightPanel"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(100, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+}
+]
+}

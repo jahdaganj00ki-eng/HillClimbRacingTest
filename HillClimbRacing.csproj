@@ -1,0 +1,34 @@
+<Project Sdk="Godot.NET.Sdk/4.3.0">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>HillClimbRacing</RootNamespace>
+    <AssemblyName>HillClimbRacing</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Godot.NET.Sdk" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="src\Core\**\*.cs" />
+    <Compile Include="src\Vehicles\**\*.cs" />
+    <Compile Include="src\Tracks\**\*.cs" />
+    <Compile Include="src\UI\**\*.cs" />
+    <Compile Include="src\Physics\**\*.cs" />
+    <Compile Include="src\Systems\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="project.godot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="export_presets.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

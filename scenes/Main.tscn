@@ -1,0 +1,233 @@
+[gd_scene load_steps=12 format=3 uid="//uid//main_menu"]
+
+[ext_resource type="Script" path="res://src/UI/MainMenu.cs" id="1_main_menu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.15, 0.9)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.7, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.4, 0.6, 0.9, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.3, 0.5, 0.9, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.6, 0.8, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.15, 0.3, 0.6, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="ButtonTheme" id="ButtonTheme"]
+normal = SubResource("StyleBoxFlat_button")
+hover = SubResource("StyleBoxFlat_button_hover")
+pressed = SubResource("StyleBoxFlat_button_pressed")
+focus = SubResource("StyleBoxFlat_button_hover")
+
+[node name="MainMenu" type="Control" layout_mode=3]
+script = ExtResource("1_main_menu")
+
+[node name="Background" type="ColorRect" parent="." layout_mode=3]
+anchors_preset = 15
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="TitlePanel" type="Panel" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -250
+offset_top = -60
+offset_right = 250
+offset_bottom = 60
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TitleLabel" type="Label" parent="TitlePanel" layout_mode=3]
+anchors_preset = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "HILL CLIMB RACING"
+theme_override_font_sizes/normal = 48
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="SubtitleLabel" type="Label" parent="TitlePanel" layout_mode=3]
+anchors_preset = 15
+anchor_top = 1
+offset_top = 10
+horizontal_alignment = 1
+text = "Windows Edition - 30 Tracks, 6 Vehicles, Deep Tuning"
+theme_override_font_sizes/normal = 18
+theme_override_colors/font_color = Color(0.7, 0.8, 1, 1)
+
+[node name="CoinDisplay" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 5
+anchor_right = 1
+anchor_bottom = 0
+offset_right = -20
+offset_top = 20
+offset_bottom = 70
+
+[node name="CoinIcon" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "🪙"
+theme_override_font_sizes/normal = 28
+
+[node name="LblCoins" name="%LblCoins" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "0"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="BtnContainer" type="VBoxContainer" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -150
+offset_top = -120
+offset_right = 150
+offset_bottom = 120
+separation = 15
+
+[node name="BtnPlay" name="%BtnPlay" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "PLAY"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 28
+
+[node name="BtnGarage" name="%BtnGarage" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "GARAGE"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 28
+
+[node name="BtnSettings" name="%BtnSettings" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "SETTINGS"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 28
+
+[node name="BtnQuit" name="%BtnQuit" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(300, 60)
+text = "QUIT"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 28
+
+[node name="PanelStats" name="%PanelStats" type="Panel" parent="." layout_mode=3]
+anchors_preset = 6
+anchor_left = 0
+anchor_top = 1
+anchor_right = 0
+anchor_bottom = 1
+offset_left = 20
+offset_top = -180
+offset_right = 320
+offset_bottom = -20
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="StatsTitle" type="Label" parent="PanelStats" layout_mode=3]
+anchors_preset = 7
+offset_top = 15
+offset_left = 15
+text = "CAREER STATS"
+theme_override_font_sizes/normal = 18
+theme_override_colors/font_color = Color(0.3, 0.7, 1, 1)
+
+[node name="LblTotalDistance" name="%LblTotalDistance" type="Label" parent="PanelStats" layout_mode=3]
+anchors_preset = 7
+offset_top = 50
+offset_left = 15
+text = "Total Distance: 0.0 km"
+theme_override_font_sizes/normal = 16
+
+[node name="LblTotalCoins" name="%LblTotalCoins" type="Label" parent="PanelStats" layout_mode=3]
+anchors_preset = 7
+offset_top = 80
+offset_left = 15
+text = "Total Coins: 0"
+theme_override_font_sizes/normal = 16
+
+[node name="LblVehiclesUnlocked" name="%LblVehiclesUnlocked" type="Label" parent="PanelStats" layout_mode=3]
+anchors_preset = 7
+offset_top = 110
+offset_left = 15
+text = "Vehicles: 1 / 6"
+theme_override_font_sizes/normal = 16
+
+[node name="LblTracksUnlocked" name="%LblTracksUnlocked" type="Label" parent="PanelStats" layout_mode=3]
+anchors_preset = 7
+offset_top = 140
+offset_left = 15
+text = "Tracks: 6 / 30"
+theme_override_font_sizes/normal = 16
+
+[node name="LblVersion" name="%LblVersion" type="Label" parent="." layout_mode=3]
+anchors_preset = 8
+anchor_right = 1
+anchor_bottom = 1
+offset_right = -20
+offset_bottom = -10
+text = "v1.0.0"
+theme_override_font_sizes/normal = 14
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+
+[node name="AnimPlayer" name="%AnimPlayer" type="AnimationPlayer" parent="."]
+anims/entrance = {
+"length": 1.0,
+"loop": false,
+"step": 0.01,
+"tracks": [
+{
+"type": "transform",
+"path": NodePath("TitlePanel"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(0, -100),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"1": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+}
+]
+}

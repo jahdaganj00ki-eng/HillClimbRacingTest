@@ -1,0 +1,234 @@
+[gd_scene load_steps=10 format=3 uid="//uid//vehicle_select"]
+
+[ext_resource type="Script" path="res://src/UI/VehicleSelectMenu.cs" id="1_vehicle_select"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.15, 0.95)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.7, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.4, 0.6, 0.9, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.3, 0.5, 0.9, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.6, 0.8, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.15, 0.3, 0.6, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.3, 0.5, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_disabled"]
+bg_color = Color(0.2, 0.2, 0.25, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="ButtonTheme" id="ButtonTheme"]
+normal = SubResource("StyleBoxFlat_button")
+hover = SubResource("StyleBoxFlat_button_hover")
+pressed = SubResource("StyleBoxFlat_button_pressed")
+disabled = SubResource("StyleBoxFlat_button_disabled")
+focus = SubResource("StyleBoxFlat_button_hover")
+
+[node name="VehicleSelectMenu" type="Control" layout_mode=3]
+script = ExtResource("1_vehicle_select")
+
+[node name="Background" type="ColorRect" parent="." layout_mode=3]
+anchors_preset = 15
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="Header" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 10
+anchor_left = 0
+anchor_top = 0
+anchor_right = 1
+anchor_bottom = 0
+offset_top = 20
+offset_bottom = 100
+separation = 20
+
+[node name="BtnBack" name="%BtnBack" type="Button" parent="Header" layout_mode=3]
+custom_minimum_size = Vector2(100, 50)
+text = "← BACK"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 20
+
+[node name="TitleLabel" type="Label" parent="Header" layout_mode=3]
+anchors_preset = 10
+anchor_left = 0.5
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "SELECT VEHICLE"
+theme_override_font_sizes/normal = 36
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="CoinDisplay" type="HBoxContainer" parent="Header" layout_mode=3]
+anchors_preset = 6
+anchor_right = 1
+offset_right = -20
+
+[node name="CoinIcon" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "🪙"
+theme_override_font_sizes/normal = 28
+
+[node name="LblCoins" name="%LblCoins" type="Label" parent="CoinDisplay" layout_mode=3]
+text = "0"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="MainContainer" type="HBoxContainer" parent="." layout_mode=3]
+anchors_preset = 15
+offset_left = 40
+offset_top = 120
+offset_right = -40
+offset_bottom = 100
+separation = 30
+
+[node name="LeftPanel" type="VBoxContainer" parent="MainContainer" layout_mode=3]
+custom_minimum_size = Vector2(500, 0)
+
+[node name="VehicleListScroll" type="ScrollContainer" parent="LeftPanel" layout_mode=3]
+custom_minimum_size = Vector2(500, 500)
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="VehicleListContainer" name="%VehicleListContainer" type="HBoxContainer" parent="VehicleListScroll" layout_mode=3]
+separation = 15
+custom_minimum_size = Vector2(0, 180)
+
+[node name="RightPanel" type="Panel" parent="MainContainer" layout_mode=3]
+custom_minimum_size = Vector2(400, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VehicleDetailsPanel" name="%VehicleDetailsPanel" type="VBoxContainer" parent="RightPanel" layout_mode=3]
+anchors_preset = 15
+offset_left = 20
+offset_top = 20
+offset_right = -20
+offset_bottom = -20
+separation = 15
+
+[node name="LblVehicleName" name="%LblVehicleName" type="Label" parent="VehicleDetailsPanel" layout_mode=3]
+horizontal_alignment = 1
+text = "Vehicle Name"
+theme_override_font_sizes/normal = 28
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+
+[node name="LblVehicleDescription" name="%LblVehicleDescription" type="Label" parent="VehicleDetailsPanel" layout_mode=3]
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Vehicle description goes here..."
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+
+[node name="Separator1" type="HSeparator" parent="VehicleDetailsPanel" layout_mode=3]
+
+[node name="LblVehicleStats" name="%LblVehicleStats" type="Label" parent="VehicleDetailsPanel" layout_mode=3]
+text = "Stats will appear here"
+theme_override_font_sizes/normal = 16
+theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
+
+[node name="Separator2" type="HSeparator" parent="VehicleDetailsPanel" layout_mode=3]
+
+[node name="BtnContainer" type="HBoxContainer" parent="VehicleDetailsPanel" layout_mode=3]
+separation = 15
+
+[node name="BtnSelect" name="%BtnSelect" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(150, 50)
+text = "SELECT"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 20
+
+[node name="BtnGarage" name="%BtnGarage" type="Button" parent="BtnContainer" layout_mode=3]
+custom_minimum_size = Vector2(150, 50)
+text = "GARAGE"
+theme_override_theme = SubResource("ButtonTheme")
+theme_override_font_sizes/normal = 20
+
+[node name="AnimPlayer" name="%AnimPlayer" type="AnimationPlayer" parent="."]
+anims/entrance = {
+"length": 0.5,
+"loop": false,
+"step": 0.01,
+"tracks": [
+{
+"type": "transform",
+"path": NodePath("LeftPanel"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(-100, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+},
+{
+"type": "transform",
+"path": NodePath("RightPanel"),
+"interp": 1,
+"loop_wrap": true,
+"imported": false,
+"enabled": true,
+"keys": {
+"0": {
+"trans": Vector2(100, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+},
+"0.5": {
+"trans": Vector2(0, 0),
+"rot": 0,
+"scale": Vector2(1, 1)
+}
+}
+}
+]
+}
