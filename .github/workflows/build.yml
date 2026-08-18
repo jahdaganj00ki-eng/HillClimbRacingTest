@@ -31,11 +31,10 @@ jobs:
           cache: true
 
       - name: Setup Godot 4.3
-        uses: firebelley/setup-godot@v2
+        uses: awalsh128/cache-godot@v2
         with:
           version: ${{ env.GODOT_VERSION }}
           export-templates: true
-          cache: true
 
       - name: Restore NuGet packages
         run: dotnet restore HillClimbRacing.csproj
