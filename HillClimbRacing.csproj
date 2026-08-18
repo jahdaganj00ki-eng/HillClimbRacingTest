@@ -8,19 +8,11 @@
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591</NoWarn>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Godot.NET.Sdk" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="src\Core\**\*.cs" />
-    <Compile Include="src\Vehicles\**\*.cs" />
-    <Compile Include="src\Tracks\**\*.cs" />
-    <Compile Include="src\UI\**\*.cs" />
-    <Compile Include="src\Physics\**\*.cs" />
-    <Compile Include="src\Systems\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
