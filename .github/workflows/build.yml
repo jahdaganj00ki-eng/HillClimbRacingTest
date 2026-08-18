@@ -30,11 +30,21 @@ jobs:
           dotnet-version: '8.0.x'
           cache: true
 
-      - name: Setup Godot 4.3
-        uses: awalsh128/cache-godot@v2
-        with:
-          version: ${{ env.GODOT_VERSION }}
-          export-templates: true
+      - name: Install Godot 4.3
+        run: |
+          # Download Godot 4.3 stable
+          wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip -q Godot_v4.3-stable_linux.x86_64.zip
+          sudo mv Godot_v4.3-stable_linux.x86_64 /usr/local/bin/godot
+          sudo chmod +x /usr/local/bin/godot
+          
+          # Download export templates
+          wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
+          unzip -q Godot_v4.3-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.stable
+          
+          # Verify installation
+          godot --version
 
       - name: Restore NuGet packages
         run: dotnet restore HillClimbRacing.csproj
